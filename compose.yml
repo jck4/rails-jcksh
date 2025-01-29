@@ -8,9 +8,6 @@ services:
     volumes:
       - foundry_data:/data
     environment:
-      - FOUNDRY_USERNAME=<your_foundry_username>
-      - FOUNDRY_PASSWORD=<your_foundry_password>
-      - FOUNDRY_ADMIN_KEY=<set_admin_key>
       - FOUNDRY_HOSTNAME=dnd.jck.sh
       - FOUNDRY_PORT=30000
     ports:
