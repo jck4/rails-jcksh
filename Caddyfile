@@ -1,0 +1,6 @@
+dnd.jck.sh {
+    reverse_proxy foundry:30000
+    tls {
+        protocols tls1.2 tls1.3
+    }
+}
