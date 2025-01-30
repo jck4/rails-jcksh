@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+
+  rails_app:
+    build:
+      context: ./jck.sh  # Ensure this path is correct relative to your docker-compose.yml
+      dockerfile: Dockerfile
+    container_name: rails_app
+    restart: unless-stopped
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USERNAME: ${POSTGRES_USER}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      DATABASE_NAME: rails_db
+      RAILS_ENV: development  # Set to production to match Dockerfile
+
+    ports:
+      - "3000:80"  # Map host port 3000 to container port 80
+    depends_on:
+      - db
+    volumes:
+      - bundle_data:/usr/local/bundle
+      - rails_data:/rails  # Persist application data (logs, etc.)
+
+  db:
+    image: postgres:14
+    container_name: postgres_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: rails_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  bundle_data:
+  db_data:
+  rails_data:

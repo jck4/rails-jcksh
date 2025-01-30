@@ -1,6 +1,14 @@
+{
+    email jacob.d.burgett@gmail.com
+    acme_ca https://acme.zerossl.com/v2/DV90
+}
+
 dnd.jck.sh {
     reverse_proxy foundry:30000
     tls {
         protocols tls1.2 tls1.3
     }
+}
+localhost {
+    reverse_proxy rails_app:3000
 }

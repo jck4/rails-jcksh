@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   foundry:
     image: felddy/foundryvtt:release
@@ -11,12 +9,11 @@ services:
       - FOUNDRY_USERNAME=${FOUNDRY_USERNAME}
       - FOUNDRY_PASSWORD=${FOUNDRY_PASSWORD}
       - FOUNDRY_ADMIN_KEY=${FOUNDRY_PASSWORD}
+      - FOUNDRY_LICENSE_KEY=${FOUNDRY_LICENSE_KEY}
       - FOUNDRY_HOSTNAME=dnd.jck.sh
       - FOUNDRY_PORT=30000
     ports:
       - "30000:30000"
-    networks:
-      - internal
 
   caddy:
     image: caddy:latest
@@ -26,20 +23,47 @@ services:
       - caddy_data:/data
       - caddy_config:/config
       - ./Caddyfile:/etc/caddy/Caddyfile
-    networks:
-      - internal
-      - external
     ports:
       - "80:80"
       - "443:443"
+
+  rails_app:
+    build:
+      context: ./jck.sh
+      dockerfile: Dockerfile
+    container_name: rails_app
+    restart: unless-stopped
+    volumes:
+      - ./rails_app:/app
+      - bundle_data:/usr/local/bundle
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USERNAME=${POSTGRES_USER}
+      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_NAME=rails_db
+      - RAILS_ENV=development
+      - PORT=3001
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    container_name: postgres_db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=rails_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
 volumes:
   foundry_data:
   caddy_data:
   caddy_config:
-
-networks:
-  internal:
-    internal: true
-  external:
-    driver: bridge
+  bundle_data:
+  db_data:
