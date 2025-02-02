@@ -9,6 +9,10 @@ dnd.jck.sh {
         protocols tls1.2 tls1.3
     }
 }
-localhost {
+
+jck.sh {
     reverse_proxy rails_app:3000
+    tls {
+        protocols tls1.2 tls1.3
+    }
 }
