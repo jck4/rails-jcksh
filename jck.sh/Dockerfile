@@ -1,5 +1,5 @@
 FROM ruby:3.3.4
-
+ENV RAILS_ENV=${RAILS_ENV}
 RUN apt-get update -qq && apt-get install -y \
   build-essential \
   libpq-dev \
