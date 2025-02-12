@@ -14,7 +14,7 @@ jobs:
         run: git pull origin main
 
       - name: Build Dockerfile
-        run: docker build jck.sh/
+        run: docker compose build
 
       - name: Restart Docker containers
         run: |
