@@ -1,22 +1,18 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Side Projects & Experiments</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style type="text/tailwindcss">
-      @theme {
-        --color-clifford: #da373d;
-      }
-    </style>
-  </head>
-  <!-- Body with a darker, cyberpunk-inspired gradient -->
-  <body class="bg-gradient-to-br from-gray-900 via-purple-900 to-black min-h-screen text-gray-100">
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/collapse.js"></script>
+</head>
 
-
-    <!-- Main Content Area -->
-    <div class="container mx-auto px-4 py-8">
-      <%= yield %>
+<body class="bg-gray-900 min-h-screen text-gray-100">
+    <div class="container mx-auto p-8">
+        <div class="bg-gray-800 rounded p-8">
+            <%= yield %>
+        </div>
     </div>
-  </body>
+</body>
 </html>

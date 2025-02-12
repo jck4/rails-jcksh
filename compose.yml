@@ -38,6 +38,9 @@ services:
       DATABASE_USERNAME: ${POSTGRES_USER}
       DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
       DATABASE_NAME: rails_db
+      RAILS_ENV: production
+      RAILS_LOG_TO_STDOUT: "true"
+      SECRET_KEY_BASE: "${RAILS_SECRET}"
     ports:
       - "3000:3000"
     depends_on:
