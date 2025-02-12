@@ -1,9 +1,39 @@
     <!-- Main Content Area -->
     <div class="space-y-8">
         <!-- Title and Intro -->
-
         <h1 class="font-bold text-purple-400 text-4xl">My Side Projects & Experiments</h1>
-
+        <!-- Web Development Projects -->
+        <div class="border-2 border-clifford rounded-lg p-6 bg-gray-900/50 shadow-lg">
+            <h2 class="text-2xl font-semibold text-purple-400">Web Development Projects</h2>
+            <div id="web-dev-accordion" class="space-y-4">
+                <div class="border border-gray-700 rounded-lg shadow-lg bg-gray-800 mb-4">
+                    <h3 id="web-dev-project-jcksh-heading">
+                        <button onclick="toggleAccordion('web-dev-project-jcksh')" class="w-full text-left p-4 focus:outline-none hover:bg-gray-700 transition duration-200" aria-expanded="false" aria-controls="web-dev-project-jcksh">
+                            <span class="font-semibold">jck.sh</span>
+                            <span class="text-sm text-gray-400 ml-2">Click to expand</span>
+                        </button>
+                    </h3>
+                    <div id="web-dev-project-jcksh" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6 bg-gray-800">
+                            <%= render "projects/jcksh" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-gray-700 rounded-lg shadow-lg bg-gray-800 mb-4">
+                    <h3 id="web-dev-project-clutterchat-heading">
+                        <button onclick="toggleAccordion('web-dev-project-clutterchat')" class="w-full text-left p-4 focus:outline-none hover:bg-gray-700 transition duration-200" aria-expanded="false" aria-controls="web-dev-project-clutterchat">
+                            <span class="font-semibold">Clutterchat</span>
+                            <span class="text-sm text-gray-400 ml-2">Click to expand</span>
+                        </button>
+                    </h3>
+                    <div id="web-dev-project-clutterchat" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6 bg-gray-800">
+                            <%= render "projects/clutterchat" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Project Categories -->
         <div class="grid grid-cols-1 gap-8">
             <!-- Game Development Projects -->
@@ -22,35 +52,17 @@
                                 <%= render "projects/pathofinventory" %>
                             </div>
                         </div>
-                    <h3 id="rimworld-vengeful-rage-heading">
-                        <button onclick="toggleAccordion('rimworld-vengeful-rage')" class="w-full text-left p-4 focus:outline-none hover:bg-gray-700 transition duration-200" aria-expanded="false" aria-controls="rimworld-vengeful-rage">
-                            <span class="font-semibold">RimWorld: Vengeful Rage</span>
-                            <span class="text-sm text-gray-400 ml-2">Click to expand</span>
-                        </button>
-                    </h3>
-                    <div id="rimworld-vengeful-rage" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <div class="p-6 bg-gray-800">
-                            <%= render "projects/rimworld_vengeful_rage" %>
-                        </div>
                     </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Web Development Projects -->
-            <div class="border-2 border-clifford rounded-lg p-6 bg-gray-900/50 shadow-lg">
-                <h2 class="text-2xl font-semibold text-purple-400">Web Development Projects</h2>
-                <div id="web-dev-accordion" class="space-y-4">
-                    <!-- Add your web development project accordion here -->
                     <div class="border border-gray-700 rounded-lg shadow-lg bg-gray-800 mb-4">
-                        <h3 id="web-dev-project-heading">
-                            <button onclick="toggleAccordion('web-dev-project')" class="w-full text-left p-4 focus:outline-none hover:bg-gray-700 transition duration-200" aria-expanded="false" aria-controls="web-dev-project">
-                                <span class="font-semibold">This Site</span>
+                        <h3 id="rimworld-vengeful-rage-heading">
+                            <button onclick="toggleAccordion('rimworld-vengeful-rage')" class="w-full text-left p-4 focus:outline-none hover:bg-gray-700 transition duration-200" aria-expanded="false" aria-controls="rimworld-vengeful-rage">
+                                <span class="font-semibold">RimWorld: Vengeful Rage</span>
                                 <span class="text-sm text-gray-400 ml-2">Click to expand</span>
                             </button>
                         </h3>
-                        <div id="web-dev-project" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div id="rimworld-vengeful-rage" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
                             <div class="p-6 bg-gray-800">
-                                <%= render "projects/thissite" %>
+                                <%= render "projects/rimworld_vengeful_rage" %>
                             </div>
                         </div>
                     </div>
@@ -60,15 +72,15 @@
     </div>
 
 <script>
-    function toggleAccordion(id) {
-        const content = document.getElementById(id);
-        const isExpanded = content.style.maxHeight && content.style.maxHeight !== '0px';
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const isExpanded = content.style.maxHeight && content.style.maxHeight !== '0px';
 
-        // Toggle the content's max-height for smooth opening and closing
-        if (isExpanded) {
-            content.style.maxHeight = '0';
-        } else {
-            content.style.maxHeight = content.scrollHeight + 'px';
+            // Toggle the content's max-height for smooth opening and closing
+            if (isExpanded) {
+                content.style.maxHeight = '0';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
         }
-    }
-</script>
+    </script>
