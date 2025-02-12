@@ -12,18 +12,17 @@ jobs:
     steps:
       - name: Pull latest changes
         run: git pull origin main
-
-      - name: Where am I
-        run: pwd
+        working-directory: /home/ubuntu/rails-jcksh
 
       - name: Build Dockerfile
         run: docker compose build
+        working-directory: /home/ubuntu/rails-jcksh
 
       - name: Restart Docker containers
         run: |
           docker compose down
           docker compose up -d --build
-          
+        working-directory: /home/ubuntu/rails-jcksh  
 
       - name: Health Check
         run: |
