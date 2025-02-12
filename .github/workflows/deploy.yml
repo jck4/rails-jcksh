@@ -13,11 +13,15 @@ jobs:
       - name: Pull latest changes
         run: git pull origin main
 
+      - name: Build Dockerfile
+        run: docker build jck.sh/
+
       - name: Restart Docker containers
         run: |
           docker compose down
-          docker compose up -d
+          docker compose up -d --build
           
+
       - name: Health Check
         run: |
           echo "Waiting for service to be healthy..."
