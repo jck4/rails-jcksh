@@ -10,9 +10,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Pull latest changes
         run: git pull origin main
 
@@ -20,7 +17,7 @@ jobs:
         run: |
           docker compose down
           docker compose up -d
-
+          
       - name: Health Check
         run: |
           echo "Waiting for service to be healthy..."
