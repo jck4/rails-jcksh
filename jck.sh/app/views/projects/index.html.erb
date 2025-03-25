@@ -41,6 +41,19 @@
                 <h2 class="text-2xl font-semibold text-purple-400">Game Mods & Tools</h2>
                 <div id="game-dev-accordion" class="space-y-4">
                     <div class="border border-gray-700 rounded-lg shadow-lg bg-gray-800 mb-4">
+                        <h3 id="tabletools-heading">
+                            <button onclick="toggleAccordion('tabletools')" class="w-full text-left p-4 focus:outline-none hover:bg-gray-700 transition duration-200" aria-expanded="false" aria-controls="tabletools">
+                                <span class="font-semibold">TableTools</span>
+                                <span class="text-sm text-gray-400 ml-2">Click to expand</span>
+                            </button>
+                        </h3>
+                        <div id="tabletools" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <div class="p-6 bg-gray-800">
+                                <%= render "projects/tabletools" %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-gray-700 rounded-lg shadow-lg bg-gray-800 mb-4">
                         <h3 id="poi-heading">
                             <button onclick="toggleAccordion('pathofinventory')" class="w-full text-left p-4 focus:outline-none hover:bg-gray-700 transition duration-200" aria-expanded="false" aria-controls="pathofinventory">
                                 <span class="font-semibold">Path of Inventory</span>

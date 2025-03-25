@@ -81,6 +81,8 @@ Rails.application.configure do
 
   config.hosts << "jck.sh"
   config.hosts << "dnd.jck.sh"
+  config.hosts << "localhost:3000"
+
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
